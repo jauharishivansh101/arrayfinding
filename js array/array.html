@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<body>
+<button id="text_value">Get Index of country</button>
+<input type="text" id="text" name="text">
+<script>
+country = ["A", "B", "C","D"];
+$(document).ready(function(){
+    $("#country").click(function(){   
+    	 console.log(country); 
+    });
+	$('#text_value').click(function() {
+		var text_value = $("#text").val();
+		var indexOf = country.indexOf(text_value);
+		if (indexOf==-1) {
+  			console.log('array not found');
+		}
+		else {
+			console.log(indexOf); 
+		}
+	});
+});
+</script>
+</body>
+</html>
