@@ -3,10 +3,17 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <body>
+<button id="country">Show Country</button>
 <button id="text_value">Get Index of country</button>
 <input type="text" id="text" name="text">
+<button id="remove_country">Remove Country</button>
+<button id="add_country">Add Country</button>
+<input type="text" id="text1" name="text1"><br>
+<button id="countrylist">Country List</button>
+<p id="results"></p>
+<p id="demo2"></p>
 <script>
-country = ["A", "B", "C","D"];
+country = ["A", "B", "C","D","E"];
 $(document).ready(function(){
     $("#country").click(function(){   
     	 console.log(country); 
@@ -15,12 +22,45 @@ $(document).ready(function(){
 		var text_value = $("#text").val();
 		var indexOf = country.indexOf(text_value);
 		if (indexOf==-1) {
-  			console.log('array not found');
+  			console.log('Array not found');
 		}
 		else {
-			console.log(indexOf); 
+			console.log(indexOf);
 		}
 	});
+});
+	$('#countrylist').click(function() {   
+		var text = "<h1> Country List</h1><ul>";
+		fLen = country.length;
+		for (i = 0; i < fLen; i++) 
+		{
+  			text += "<li>" + country[i] + "</li>";
+		}
+			text += "</ul>";
+  		document.getElementById("results").innerHTML = text; 
+});
+    $('#remove_country').click(function() {
+		var text_value = $("#text1").val();
+		var indexOf = country.indexOf(text_value);
+		if (indexOf==-1) {	
+
+			document.getElementById("results").innerHTML = ("Please enter atleast one country name to remove from the list."); 
+		}
+			else 
+		{
+		 country.splice(indexOf,1);
+		
+		$("#countrylist").trigger("click");
+		}
+});
+$('#add_country').click(function() {
+		var text_value = $("#text1").val();
+		//var indexOf = country.indexOf(text_value);
+		
+		 country.push(text_value);
+		
+		$("#countrylist").trigger("click");
+		
 });
 </script>
 </body>
